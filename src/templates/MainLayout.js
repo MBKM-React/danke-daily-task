@@ -133,50 +133,50 @@ const MainLayout = () => {
 }
 
 const allTempTask = [
-   {
-      id: 1,
-      activityName: 'Training',
-      date: '2021-09-01',
-      startTime: '08:00',
-      endTime: '11:00',
-      taskDescription: 'Penggunaan React Hook\n- useState\n- useEffect\n- useMemo\n- useCallback\n- useContext\n- dsb.',
-      totalDuration: 3,
-      status: "Pending"
-   },
-   {
-      id: 2,
-      activityName: 'Review',
-      date: '2021-09-01',
-      startTime: '11:00',
-      endTime: '17:00',
-      taskDescription: '- Demo Aplikasi\n- Mendapatkan Masukkan\n- UI Improvement\n- Temporary Table',
-      totalDuration: 5,
-      status: "Pending"
-   },
+   // {
+   //    id: 1,
+   //    activityName: 'Training',
+   //    date: '2021-09-01',
+   //    startTime: '08:00',
+   //    endTime: '11:00',
+   //    taskDescription: 'Penggunaan React Hook\n- useState\n- useEffect\n- useMemo\n- useCallback\n- useContext\n- dsb.',
+   //    totalDuration: 3,
+   //    status: "Pending"
+   // },
+   // {
+   //    id: 2,
+   //    activityName: 'Review',
+   //    date: '2021-09-01',
+   //    startTime: '11:00',
+   //    endTime: '17:00',
+   //    taskDescription: '- Demo Aplikasi\n- Mendapatkan Masukkan\n- UI Improvement\n- Temporary Table',
+   //    totalDuration: 5,
+   //    status: "Pending"
+   // },
 ]
 
 const allTasks = [
-   [
-      { "id": 6216, "activityName": "Training", "date": "2021-09-06", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- useMemo\n- useRef", "totalDuration": 3, "status": "Pending" },
-      { "id": 7173, "activityName": "Exploring ", "date": "2021-09-06", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- Manipulasi Element pada DOM dengan useRef\n- Auto Focus Input Element in ReactJS\n- Multiple refs For Handling Form Elements menggunakan React Hook\n- Penggunaan React Hook Form ", "totalDuration": 5, "status": "Pending" }
-   ],
-   [
-      { "id": 7554, "activityName": "Training ", "date": "2021-09-07", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- Review useRef\n- Implementasi React Hook Form\n- useContext\n- useReducer\n- Group Task (1 Person, 1 Page)", "totalDuration": 3, "status": "Pending" },
-      { "id": 78, "activityName": "Exploring", "date": "2021-09-07", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- Penggunaan useCallback\n- Diskusi konsep Group Task", "totalDuration": 5, "status": "Pending" }
-   ],
-   [
-      { "id": 8896, "activityName": "Training", "date": "2021-09-08", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- useCallback\n- Pengerjaan Tugas Individu", "totalDuration": 3, "status": "Pending" },
-      { "id": 1685, "activityName": "Exploring", "date": "2021-09-08", "startTime": "11:00", "endTime": "15:00", "taskDescription": "- Penggunaan React Bootstrap\n- Penggunaan React Icons\n- Penggunaan SweetAlert", "totalDuration": 3, "status": "Pending" },
-      { "id": 4478, "activityName": "Review Progress Tugas", "date": "2021-09-08", "startTime": "15:00", "endTime": "17:00", "taskDescription": "- Demo Tugas\n- Mendapatkan Saran", "totalDuration": 2, "status": "Pending" }
-   ],
-   [
-      { "id": 3267, "activityName": "Individual Task", "date": "2021-09-10", "startTime": "08:00", "endTime": "14:00", "taskDescription": "- Membuat section baru (Temp Task)\n- Membuat tampilan dari Temp Task & All Task\n- Penggunaan Card & Accordion pada Material UI", "totalDuration": 5, "status": "Pending" },
-      { "id": 1206, "activityName": "Review Progress", "date": "2021-09-10", "startTime": "14:00", "endTime": "17:00", "taskDescription": "- Demo Aplikasi\n- Mendapatkan saran perbaikan\n- Mengubah beberapa bagian Component\n- Improve penggunaan warna", "totalDuration": 3, "status": "Pending" }
-   ],
-   [
-      { "id": 2143, "activityName": "Review", "date": "2021-09-20", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- State & Lifecycle in ReactJS", "totalDuration": 3, "status": "Pending" },
-      { "id": 72, "activityName": "Exploring", "date": "2021-09-20", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- React Hook\n- useState\n- useEffect\n- useMemo\n- useRef\n- useContext\n- useReducer\n- useCallback\n- Creating Custom Hooks", "totalDuration": 5, "status": "Pending" }
-   ]
+   // [
+   //    { "id": 6216, "activityName": "Training", "date": "2021-09-06", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- useMemo\n- useRef", "totalDuration": 3, "status": "Pending" },
+   //    { "id": 7173, "activityName": "Exploring ", "date": "2021-09-06", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- Manipulasi Element pada DOM dengan useRef\n- Auto Focus Input Element in ReactJS\n- Multiple refs For Handling Form Elements menggunakan React Hook\n- Penggunaan React Hook Form ", "totalDuration": 5, "status": "Pending" }
+   // ],
+   // [
+   //    { "id": 7554, "activityName": "Training ", "date": "2021-09-07", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- Review useRef\n- Implementasi React Hook Form\n- useContext\n- useReducer\n- Group Task (1 Person, 1 Page)", "totalDuration": 3, "status": "Pending" },
+   //    { "id": 78, "activityName": "Exploring", "date": "2021-09-07", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- Penggunaan useCallback\n- Diskusi konsep Group Task", "totalDuration": 5, "status": "Pending" }
+   // ],
+   // [
+   //    { "id": 8896, "activityName": "Training", "date": "2021-09-08", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- useCallback\n- Pengerjaan Tugas Individu", "totalDuration": 3, "status": "Pending" },
+   //    { "id": 1685, "activityName": "Exploring", "date": "2021-09-08", "startTime": "11:00", "endTime": "15:00", "taskDescription": "- Penggunaan React Bootstrap\n- Penggunaan React Icons\n- Penggunaan SweetAlert", "totalDuration": 3, "status": "Pending" },
+   //    { "id": 4478, "activityName": "Review Progress Tugas", "date": "2021-09-08", "startTime": "15:00", "endTime": "17:00", "taskDescription": "- Demo Tugas\n- Mendapatkan Saran", "totalDuration": 2, "status": "Pending" }
+   // ],
+   // [
+   //    { "id": 3267, "activityName": "Individual Task", "date": "2021-09-10", "startTime": "08:00", "endTime": "14:00", "taskDescription": "- Membuat section baru (Temp Task)\n- Membuat tampilan dari Temp Task & All Task\n- Penggunaan Card & Accordion pada Material UI", "totalDuration": 5, "status": "Pending" },
+   //    { "id": 1206, "activityName": "Review Progress", "date": "2021-09-10", "startTime": "14:00", "endTime": "17:00", "taskDescription": "- Demo Aplikasi\n- Mendapatkan saran perbaikan\n- Mengubah beberapa bagian Component\n- Improve penggunaan warna", "totalDuration": 3, "status": "Pending" }
+   // ],
+   // [
+   //    { "id": 2143, "activityName": "Review", "date": "2021-09-20", "startTime": "08:00", "endTime": "11:00", "taskDescription": "- State & Lifecycle in ReactJS", "totalDuration": 3, "status": "Pending" },
+   //    { "id": 72, "activityName": "Exploring", "date": "2021-09-20", "startTime": "11:00", "endTime": "17:00", "taskDescription": "- React Hook\n- useState\n- useEffect\n- useMemo\n- useRef\n- useContext\n- useReducer\n- useCallback\n- Creating Custom Hooks", "totalDuration": 5, "status": "Pending" }
+   // ]
 ]
 
 export default MainLayout
