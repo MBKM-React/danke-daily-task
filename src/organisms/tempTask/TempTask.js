@@ -74,6 +74,8 @@ const breakpoints = {
 }
 
 const TempTask = (props) => {
+   const scroll = 'paper'
+
    const {
       tempTask,
       handleDeleteTempTask,
@@ -273,7 +275,7 @@ const TempTask = (props) => {
                   variant="h4"
                   component="div" />
             </DialogTitle>
-            <DialogContent dividers={scroll === 'paper'}>
+            <DialogContent dividers={scroll}>
                <DialogContentText
                   id="scroll-dialog-description"
                   component="div"
