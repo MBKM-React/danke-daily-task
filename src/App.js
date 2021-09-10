@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './mainStyles/App.css';
+import { ThemeProvider } from '@material-ui/core'
+import { unstable_createMuiStrictModeTheme as createTheme } from '@material-ui/core/styles'
+import MainLayout from './templates/MainLayout';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Oswald',
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 600
+  }
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ThemeProvider theme={theme}>
+        <MainLayout />
+      </ThemeProvider>
+    </>
+  )
 }
 
 export default App;
