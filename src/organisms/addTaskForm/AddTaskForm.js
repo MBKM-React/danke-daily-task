@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import moment from 'moment'
 import TextField from '../../atoms/textField/TextField'
@@ -175,6 +176,21 @@ const AddTaskForm = ({ tempTask, handleAddTempTask, handleFabClose }) => {
          </Grid>
       </form>
    )
+}
+
+AddTaskForm.propTypes = {
+   /**
+    * Temporary task (Array Of Object)
+    */
+   tempTask: PropTypes.arrayOf(PropTypes.object),
+   /**
+    * Function that handle form when user submit the temp task
+    */ 
+   handleAddTempTask: PropTypes.func, 
+   /**
+    * Function that will close the form when user click close button
+    */
+   handleFabClose: PropTypes.func
 }
 
 export default AddTaskForm

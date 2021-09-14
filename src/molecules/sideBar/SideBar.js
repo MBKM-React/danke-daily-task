@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Typography from '../../atoms/typography/Typography'
 import Divider from '@material-ui/core/Divider'
@@ -123,6 +124,25 @@ const SideBar = (props) => {
          </Hidden>
       </nav>
    )
+}
+
+SideBar.propTypes = {
+   /**
+    * For collapse the sidebar if opened in mobile
+    */
+   mobileOpen: PropTypes.bool.isRequired,
+   /**
+    * For making sidebar closable if opened in mobile
+    */
+   handleDrawerToggle: PropTypes.func.isRequired,
+   /**
+    * Change the current page to destination page
+    */
+   handleChangePage: PropTypes.func.isRequired,
+   /**
+    * The current page
+    */
+   currPage: PropTypes.string.isRequired
 }
 
 export default SideBar

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import Typography from '../../atoms/typography/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -128,7 +129,7 @@ const TempTask = (props) => {
          return sum + currPosition['totalDuration']
       }, 0)
 
-      if(totalDuration > 8) {
+      if (totalDuration > 8) {
          swal({
             title: "Maximum 8 Work Hours",
             icon: "error",
@@ -226,7 +227,7 @@ const TempTask = (props) => {
                      variant="extended"
                      size="large"
                      styles={classes.deleteFab}
-                     handleOnClick={onClickDeleteAll} />
+                     handleOnClick={() => onClickDeleteAll()} />
 
                   <FabWithZoom
                      text="Submit Task"
@@ -234,7 +235,7 @@ const TempTask = (props) => {
                      variant="extended"
                      size="large"
                      styles={classes.submitFab}
-                     handleOnClick={onClickSubmit} />
+                     handleOnClick={() => onClickSubmit()} />
                </>
             )
             : tempTask.length > 0
@@ -244,7 +245,7 @@ const TempTask = (props) => {
                   variant="extended"
                   size="large"
                   styles={classes.submitFab}
-                  handleOnClick={onClickSubmit} />)
+                  handleOnClick={() => onClickSubmit()} />)
                : (<div>
                   <Typography
                      text="There are no temporary task yet."
@@ -256,7 +257,7 @@ const TempTask = (props) => {
             text={<AddIcon />}
             color="primary"
             styles={classes.addFab}
-            handleOnClick={handleClickOpen} />
+            handleOnClick={() => handleClickOpen()} />
 
          <Dialog
             open={open}
@@ -290,6 +291,29 @@ const TempTask = (props) => {
          </Dialog>
       </>
    )
+}
+
+TempTask.propTypes = {
+   /**
+    * Temporary task (Array Of Object)
+    */
+   tempTask: PropTypes.arrayOf(PropTypes.object),
+   /**
+    * Function that handle the temporary task to be deleted
+    */
+   handleDeleteTempTask: PropTypes.func,
+   /**
+    * Function that handle the temporary tasks to be submitted
+    */
+   handleSubmitTempTask: PropTypes.func,
+   /**
+    * Function that handle the temporary task to be added
+    */
+   handleAddTempTask: PropTypes.func,
+   /**
+    * Function that handle the temporary tasks to be deleted
+    */
+   handleDeleteAllTask: PropTypes.func
 }
 
 export default TempTask

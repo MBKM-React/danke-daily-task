@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '../../atoms/typography/Typography'
 import AppBar from '@material-ui/core/AppBar'
@@ -115,6 +116,13 @@ const TopBar = ({ handleDrawerToggle }) => {
          </Modal>
       </>
    )
+}
+
+TopBar.propTypes = {
+   /**
+    * For show sidebar toggle if opened in mobile
+    */
+    handleDrawerToggle: PropTypes.func.isRequired,
 }
 
 export default TopBar

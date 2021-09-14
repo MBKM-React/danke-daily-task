@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Typography from '../../atoms/typography/Typography'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -259,6 +260,21 @@ const AllTask = ({ tasks, handleDeleteTask, handleUpdateStatusTask }) => {
          )}
       </>
    )
+}
+
+AllTask.propTypes = {
+   /**
+    * All submitted tasks from temporary tasks
+    */
+   tasks: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)), 
+   /**
+    * Function that handle the task to be deleted
+    */
+   handleDeleteTask: PropTypes.func, 
+   /**
+    * Function that handle the status task to be updated
+    */
+   handleUpdateStatusTask: PropTypes.func
 }
 
 export default AllTask
