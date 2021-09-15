@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import TempTask from './TempTask'
 
 export default {
@@ -9,7 +10,10 @@ export default {
       handleSubmitTempTask: { action: "handleSubmitTempTask" },
       handleAddTempTask: { action: "handleAddTempTask" },
       handleDeleteAllTask: { action: "handleDeleteAllTask" },
-   }
+   },
+   decorators: [
+      (TempTask) => (<MemoryRouter><TempTask /></MemoryRouter>)
+   ]
 }
 
 const Template = (args) => <TempTask {...args} />
