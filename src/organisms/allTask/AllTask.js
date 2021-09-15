@@ -94,12 +94,12 @@ const breakpoints = {
 }
 
 const AllTask = ({ tasks, handleDeleteTask, handleUpdateStatusTask }) => {
-   const classes = useStyles();
-   const [expanded, setExpanded] = useState('');
+   const classes = useStyles()
+   const [expanded, setExpanded] = useState('')
 
    const handleChange = (panel) => (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
-   };
+      setExpanded(newExpanded ? panel : false)
+   }
 
    const onClickDelete = (index) => {
       swal({

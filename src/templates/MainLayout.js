@@ -4,6 +4,8 @@ import TopBar from '../molecules/topBar/TopBar'
 import SideBar from '../molecules/sideBar/SideBar'
 import AllTask from '../organisms/allTask/AllTask'
 import TempTask from '../organisms/tempTask/TempTask'
+import NotFound from '../organisms/notFound/NotFound'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
    root: {
@@ -28,7 +30,6 @@ const ALL_TASK_KEY = 'dailyTaskApp.allTask'
 const MainLayout = () => {
    const classes = useStyles()
    const [mobileOpen, setMobileOpen] = useState(false)
-   const [currPage, setCurrPage] = useState('All Task')
    const [tempTask, setTempTask] = useState(allTempTask)
    const [tasks, setTasks] = useState(allTasks)
 
@@ -51,10 +52,6 @@ const MainLayout = () => {
 
    const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen)
-   }
-
-   const handleChangePage = (page) => {
-      setCurrPage(page)
    }
 
    const handleAddTempTask = (newTask) => {
@@ -80,55 +77,56 @@ const MainLayout = () => {
 
    const handleUpdateStatusTask = (index, statusUpdate) => {
       const res = tasks.map((task, i) => i === index ? task.map(item => {
-         return {...item, status: statusUpdate}
+         return { ...item, status: statusUpdate }
       }) : task)
       setTasks(res)
    }
 
    return (
-      <>
-         <div className={classes.root}>
-            <TopBar handleDrawerToggle={handleDrawerToggle} />
-            <SideBar
-               mobileOpen={mobileOpen}
-               handleDrawerToggle={handleDrawerToggle}
-               handleChangePage={handleChangePage}
-               currPage={currPage} />
-            <main className={classes.content} >
-               <div className={classes.toolbar} />
+      <Router>
+         <>
+            <div className={classes.root}>
+               <TopBar handleDrawerToggle={handleDrawerToggle} />
+               <SideBar
+                  mobileOpen={mobileOpen}
+                  handleDrawerToggle={handleDrawerToggle} />
+               <main className={classes.content} >
+                  <div className={classes.toolbar} />
+                  {/* {currPage === 'All Task'
+                        ? <AllTask
+                           tasks={tasks}
+                           handleDeleteTask={handleDeleteTask}
+                           handleUpdateStatusTask={handleUpdateStatusTask} />
+                        : <TempTask
+                           tempTask={tempTask}
+                           handleDeleteTempTask={handleDeleteTempTask}
+                           handleSubmitTempTask={handleSubmitTempTask}
+                           handleAddTempTask={handleAddTempTask}
+                           handleDeleteAllTask={handleDeleteAllTask} />} */}
 
-               {/* 3 Sections */}
-               {/* {currPage === 'All Task'
-                  ? <AllTask
-                     tasks={tasks}
-                     handleDeleteTask={handleDeleteTask} />
-                  : currPage === 'Temp Task'
-                     ? <TempTask
-                        tempTask={tempTask}
-                        handleDeleteTempTask={handleDeleteTempTask}
-                        handleSubmitTempTask={handleSubmitTempTask}
-                        handleCancle={setCurrPage}
-                        handleAddTempTask={handleAddTempTask} />
-                     : <AddTaskForm
-                        tempTask={tempTask}
-                        handleCancle={setCurrPage}
-                        handleAddTempTask={handleAddTempTask} />} */}
-
-               {/* 2 Sections */}
-               {currPage === 'All Task'
-                  ? <AllTask
-                     tasks={tasks}
-                     handleDeleteTask={handleDeleteTask}
-                     handleUpdateStatusTask={handleUpdateStatusTask} />
-                  : <TempTask
-                     tempTask={tempTask}
-                     handleDeleteTempTask={handleDeleteTempTask}
-                     handleSubmitTempTask={handleSubmitTempTask}
-                     handleAddTempTask={handleAddTempTask}
-                     handleDeleteAllTask={handleDeleteAllTask} />}
-            </main>
-         </div>
-      </>
+                  <Switch>
+                     <Route exact path="/">
+                        <AllTask
+                           tasks={tasks}
+                           handleDeleteTask={handleDeleteTask}
+                           handleUpdateStatusTask={handleUpdateStatusTask} />
+                     </Route>
+                     <Route path="/temporary-task">
+                        <TempTask
+                           tempTask={tempTask}
+                           handleDeleteTempTask={handleDeleteTempTask}
+                           handleSubmitTempTask={handleSubmitTempTask}
+                           handleAddTempTask={handleAddTempTask}
+                           handleDeleteAllTask={handleDeleteAllTask} />
+                     </Route>
+                     <Route path="*">
+                        <NotFound />
+                     </Route>
+                  </Switch>
+               </main>
+            </div>
+         </>
+      </Router>
    )
 }
 

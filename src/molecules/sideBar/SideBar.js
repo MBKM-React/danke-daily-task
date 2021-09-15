@@ -13,6 +13,7 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import Hidden from '@material-ui/core/Hidden'
 import Drawer from '@material-ui/core/Drawer'
 import grey from '@material-ui/core/colors/grey'
+import { Link, useLocation } from 'react-router-dom'
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
@@ -33,19 +34,22 @@ const useStyles = makeStyles((theme) => ({
       '&:hover': {
          background: grey[300]
       }
+   },
+   link: {
+      textDecoration: "none",
+      color: "black"
    }
 }))
 
 const SideBar = (props) => {
-   const { 
-      mobileOpen, 
-      handleDrawerToggle, 
-      handleChangePage,
-      currPage
+   const {
+      mobileOpen,
+      handleDrawerToggle
    } = props
 
    const classes = useStyles()
    const theme = useTheme();
+   const currLocation = useLocation().pathname
 
    const drawer = (
       <div>
@@ -58,37 +62,31 @@ const SideBar = (props) => {
          </div>
 
          <Divider />
+
          <List variant="secondary">
-            <ListItem 
-               button 
-               key="All Task" 
-               onClick={() => handleChangePage('All Task')} 
-               className={currPage === 'All Task' ? classes.active : '' }>
-               <ListItemIcon>
-                  <FormatListBulletedIcon />
-               </ListItemIcon>
-               <ListItemText primary="All Task" />
-            </ListItem>
+            <Link to="/" className={classes.link}>
+               <ListItem
+                  button
+                  key="All Task"
+                  className={currLocation === '/' ? classes.active : ''}>
+                  <ListItemIcon>
+                     <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="All Task" />
+               </ListItem>
+            </Link>
 
-            <ListItem 
-               button key="Temp Task" 
-               onClick={() => handleChangePage('Temp Task')}
-               className={currPage === 'Temp Task' ? classes.active : '' }>
-               <ListItemIcon>
-                  <BookmarkIcon />
-               </ListItemIcon>
-               <ListItemText primary="Temp Task" />
-            </ListItem>
-
-            {/* <ListItem 
-               button key="Add Task" 
-               onClick={() => handleChangePage('Add Task')}
-               className={currPage === 'Add Task' ? classes.active : '' }>
-               <ListItemIcon>
-                  <AddBoxIcon />
-               </ListItemIcon>
-               <ListItemText primary="Add Task" />
-            </ListItem> */}
+            <Link to="temporary-task" className={classes.link}>
+               <ListItem
+                  button
+                  key="Temp Task"
+                  className={currLocation === '/temporary-task' ? classes.active : ''}>
+                  <ListItemIcon>
+                     <BookmarkIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Temp Task" />
+               </ListItem>
+            </Link>
          </List>
       </div>
    )
@@ -135,14 +133,6 @@ SideBar.propTypes = {
     * For making sidebar closable if opened in mobile
     */
    handleDrawerToggle: PropTypes.func.isRequired,
-   /**
-    * Change the current page to destination page
-    */
-   handleChangePage: PropTypes.func.isRequired,
-   /**
-    * The current page
-    */
-   currPage: PropTypes.string.isRequired
 }
 
 export default SideBar
