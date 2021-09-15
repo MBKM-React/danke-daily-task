@@ -5,6 +5,7 @@ import SideBar from '../molecules/sideBar/SideBar'
 import AllTask from '../organisms/allTask/AllTask'
 import TempTask from '../organisms/tempTask/TempTask'
 import NotFound from '../organisms/notFound/NotFound'
+import Dialog from '../molecules/dialog/Dialog'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -75,6 +76,10 @@ const MainLayout = () => {
       setTasks(tasks.filter((item, i) => i !== index))
    }
 
+   const handleUpdateTempTask = (id, edittedTempTask) => {
+      setTempTask(tempTask.map(item => item.id === id ? { ...item, ...edittedTempTask } : item))
+   }
+
    const handleUpdateStatusTask = (index, statusUpdate) => {
       const res = tasks.map((task, i) => i === index ? task.map(item => {
          return { ...item, status: statusUpdate }
@@ -92,18 +97,6 @@ const MainLayout = () => {
                   handleDrawerToggle={handleDrawerToggle} />
                <main className={classes.content} >
                   <div className={classes.toolbar} />
-                  {/* {currPage === 'All Task'
-                        ? <AllTask
-                           tasks={tasks}
-                           handleDeleteTask={handleDeleteTask}
-                           handleUpdateStatusTask={handleUpdateStatusTask} />
-                        : <TempTask
-                           tempTask={tempTask}
-                           handleDeleteTempTask={handleDeleteTempTask}
-                           handleSubmitTempTask={handleSubmitTempTask}
-                           handleAddTempTask={handleAddTempTask}
-                           handleDeleteAllTask={handleDeleteAllTask} />} */}
-
                   <Switch>
                      <Route exact path="/">
                         <AllTask
@@ -118,6 +111,16 @@ const MainLayout = () => {
                            handleSubmitTempTask={handleSubmitTempTask}
                            handleAddTempTask={handleAddTempTask}
                            handleDeleteAllTask={handleDeleteAllTask} />
+                     </Route>
+                     <Route path="/edit/:id">
+                        <Dialog
+                           open={true}
+                           tempTask={tempTask}
+                           handleUpdateTempTask={handleUpdateTempTask}
+                           instruction="Update" />
+                     </Route>
+                     <Route path="/404">
+                        <NotFound />
                      </Route>
                      <Route path="*">
                         <NotFound />

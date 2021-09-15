@@ -10,15 +10,15 @@ import AddIcon from '@material-ui/icons/Add'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import Masonry from 'react-masonry-css'
 import swal from 'sweetalert'
-import Dialog from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import AddTaskForm from '../addTaskForm/AddTaskForm'
-import Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider'
 import FabWithZoom from '../../atoms/button/FabWithZoom'
 import TaskDescriptionItem from '../../molecules/taskDescriptionItem/TaskDescriptionItem'
-import Chip from '@material-ui/core/Chip';
+import Button from '../../atoms/button/Button'
+import Grid from '@material-ui/core/Grid'
+import Chip from '@material-ui/core/Chip'
+import Dialog from '../../molecules/dialog/Dialog'
+import yellow from '@material-ui/core/colors/yellow'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
    pageTitle: {
@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 10
    },
    buttonContainer: {
-      textAlign: 'center'
+      textAlign: 'center',
+      padding: '0 18px 15px'
    },
    button: {
       paddingLeft: 50,
@@ -65,6 +66,16 @@ const useStyles = makeStyles((theme) => ({
    },
    chip: {
       marginBottom: 6
+   },
+   link: {
+      textDecoration: 'none',
+      color: 'black'
+   },
+   editBtn: {
+      backgroundColor: yellow[500],
+      '&:hover': {
+         backgroundColor: yellow[600]
+      }
    }
 }))
 
@@ -213,6 +224,20 @@ const TempTask = (props) => {
                      <CardContent className={classes.cardContent}>
                         <TaskDescriptionItem value={item.taskDescription} />
                      </CardContent>
+
+                     <Grid container spacing={1} className={classes.buttonContainer}>
+                        <Grid item xs={12} md={12}>
+                           <Link to={`edit/${item.id}`} className={classes.link}>
+                              <Button
+                                 text="Edit"
+                                 variant="contained"
+                                 align="center"
+                                 fullWidth
+                                 className={classes.editBtn} />
+                           </Link>
+                        </Grid>
+                     </Grid>
+
                   </Card>
                </div>
             )))}
@@ -261,34 +286,11 @@ const TempTask = (props) => {
 
          <Dialog
             open={open}
-            onClose={handleClose}
-            scroll="paper"
-            aria-labelledby="scroll-dialog-title"
-            aria-describedby="scroll-dialog-description"
-            fullWidth>
-            <DialogTitle
-               id="scroll-dialog-title"
-               align="center">
-               <Typography
-                  text="Add Task"
-                  variant="h4"
-                  component="div" />
-            </DialogTitle>
-            <DialogContent>
-               <DialogContentText
-                  id="scroll-dialog-description"
-                  component="div"
-                  ref={descriptionElementRef}
-                  tabIndex={-1}>
-
-                  <AddTaskForm
-                     tempTask={tempTask}
-                     handleAddTempTask={handleAddTempTask}
-                     handleFabClose={handleClose} />
-
-               </DialogContentText>
-            </DialogContent>
-         </Dialog>
+            handleClose={handleClose}
+            descriptionElementRef={descriptionElementRef}
+            tempTask={tempTask}
+            handleAddTempTask={handleAddTempTask}
+            instruction="Add" />
       </>
    )
 }

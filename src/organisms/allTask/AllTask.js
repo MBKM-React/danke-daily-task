@@ -16,7 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import TaskDescriptionItem from '../../molecules/taskDescriptionItem/TaskDescriptionItem'
 import Button from '../../atoms/button/Button'
 import Grid from '@material-ui/core/Grid'
-import Chip from '@material-ui/core/Chip';
+import Chip from '@material-ui/core/Chip'
 
 const useStyles = makeStyles({
    pageTitle: {
