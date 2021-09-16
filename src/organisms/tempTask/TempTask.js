@@ -17,7 +17,7 @@ import Button from '../../atoms/button/Button'
 import Grid from '@material-ui/core/Grid'
 import Chip from '@material-ui/core/Chip'
 import Dialog from '../../molecules/dialog/Dialog'
-import yellow from '@material-ui/core/colors/yellow'
+import teal from '@material-ui/core/colors/teal'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -69,12 +69,12 @@ const useStyles = makeStyles((theme) => ({
    },
    link: {
       textDecoration: 'none',
-      color: 'black'
    },
    editBtn: {
-      backgroundColor: yellow[500],
+      color: 'white',
+      backgroundColor: teal[400],
       '&:hover': {
-         backgroundColor: yellow[600]
+         backgroundColor: teal[500]
       }
    }
 }))

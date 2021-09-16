@@ -23,10 +23,6 @@ const Dialog = (props) => {
    const history = useHistory()
    const item = tempTask.find((items) => items.id === parseInt(id))
 
-   useEffect(() => {
-      console.log(item)
-   }, [])
-
    return (
       <DialogUI
          open={open}

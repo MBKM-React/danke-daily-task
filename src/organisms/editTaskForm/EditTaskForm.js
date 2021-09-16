@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import moment from 'moment'
 import TextField from '../../atoms/textField/TextField'
@@ -59,7 +60,7 @@ const EditTaskForm = ({ item, handleUpdateTempTask }) => {
          taskDescription: taskDescription,
          totalDuration: totalDuration
       }
-      handleUpdateTempTask(item.id, {...item, ...changes})
+      handleUpdateTempTask(item.id, { ...item, ...changes })
 
       swal({
          title: "Task Updated Successfully",
@@ -170,6 +171,17 @@ const EditTaskForm = ({ item, handleUpdateTempTask }) => {
          </Grid>
       </form>
    )
+}
+
+EditTaskForm.propTypes = {
+   /**
+    * Temporary task selected for editing
+    */
+   item: PropTypes.object,
+   /**
+    * Function that handle the temporary task to be updated
+    */
+   handleUpdateTempTask: PropTypes.func,
 }
 
 export default EditTaskForm
